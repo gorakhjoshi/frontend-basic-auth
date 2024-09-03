@@ -2,7 +2,7 @@ import { Navigate, Outlet } from 'react-router-dom'
 import { isAuthenticated, refreshTokenAndSetCredentials } from './authSlice'
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
-import { getCookie } from '../../utils/utils'
+import Cookies from 'js-cookie'
 
 const RequireAuth = () => {
   const dispatch = useAppDispatch()
@@ -10,9 +10,10 @@ const RequireAuth = () => {
   const isAuth = useAppSelector(isAuthenticated)
 
   // Get the value of 'refreshToken'
-  const myCookieValue = getCookie('refreshToken')
+  // const myCookieValue = getCookie('refreshToken')
 
-  console.log(myCookieValue)
+  const myCookie = Cookies.get('name')
+  console.log(myCookie)
 
   useEffect(() => {
     // if (!myCookieValue) {

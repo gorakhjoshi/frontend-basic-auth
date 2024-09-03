@@ -9,6 +9,7 @@ const authLocalStorage = localStorage.getItem('isAuth')
 export const refreshTokenAndSetCredentials = () => async (dispatch: AppDispatch) => {
   try {
     const response = await dispatch(authApiSlice.endpoints.getRefreshToken.initiate())
+    console.log(response)
     if (response.isSuccess) {
       dispatch(setCredentials(response.data))
       return response
