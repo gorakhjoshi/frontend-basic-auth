@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from 'react-router-dom'
-import { isAuthenticated, refreshTokenAndSetCredentials, setLogOut } from './authSlice'
+import { isAuthenticated, refreshTokenAndSetCredentials } from './authSlice'
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { getCookie } from '../../utils/utils'
