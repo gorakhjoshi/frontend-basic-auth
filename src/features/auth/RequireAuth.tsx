@@ -1,0 +1,26 @@
+import { Navigate, Outlet } from 'react-router-dom'
+import { isAuthenticated, refreshTokenAndSetCredentials, setLogOut } from './authSlice'
+import { useEffect } from 'react'
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import { getCookie } from '../../utils/utils'
+
+const RequireAuth = () => {
+  const dispatch = useAppDispatch()
+
+  const isAuth = useAppSelector(isAuthenticated)
+
+  // Get the value of 'refreshToken'
+  const myCookieValue = getCookie('refreshToken')
+
+  useEffect(() => {
+    if (!myCookieValue) {
+      dispatch(setLogOut())
+    } else {
+      dispatch(refreshTokenAndSetCredentials())
+    }
+  }, [dispatch, myCookieValue])
+
+  return isAuth ? <Outlet /> : <Navigate to="/" />
+}
+
+export default RequireAuth
