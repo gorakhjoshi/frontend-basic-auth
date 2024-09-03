@@ -12,13 +12,15 @@ const RequireAuth = () => {
   // Get the value of 'refreshToken'
   const myCookieValue = getCookie('refreshToken')
 
+  console.log(myCookieValue)
+
   useEffect(() => {
-    if (!myCookieValue) {
-      dispatch(setLogOut())
-    } else {
-      dispatch(refreshTokenAndSetCredentials())
-    }
-  }, [dispatch, myCookieValue])
+    // if (!myCookieValue) {
+    //   dispatch(setLogOut())
+    // } else {
+    dispatch(refreshTokenAndSetCredentials())
+    // }
+  }, [dispatch])
 
   return isAuth ? <Outlet /> : <Navigate to="/" />
 }
