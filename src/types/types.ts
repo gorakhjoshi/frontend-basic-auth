@@ -21,6 +21,7 @@ export interface User {
   roleId: Role
   iat: number
   exp: number
+  role: string
 }
 
 export interface AuthState {
