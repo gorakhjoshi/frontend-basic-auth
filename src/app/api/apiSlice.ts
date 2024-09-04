@@ -2,7 +2,7 @@ import { BaseQueryFn, createApi, FetchArgs, fetchBaseQuery, FetchBaseQueryError 
 import { setCredentials, setLogOut } from '../../features/auth/authSlice'
 import { RootState } from '../../types/types'
 
-const baseUrl = import.meta.env.VITE_ENV === 'DEVELOPMENT' ? 'http://localhost:3000/api' : 'https://gorakhauth.onrender.com/api'
+const baseUrl = import.meta.env.VITE_ENV === 'DEV' ? 'http://localhost:3000/api' : 'https://gorakhauth.onrender.com/api'
 
 const baseQuery = fetchBaseQuery({
   baseUrl,
