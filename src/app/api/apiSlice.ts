@@ -3,6 +3,7 @@ import { setCredentials, setLogOut } from '../../features/auth/authSlice'
 import { RootState } from '../../types/types'
 
 const baseUrl = import.meta.env.VITE_ENV === 'DEV' ? 'http://localhost:3000/api' : 'https://gorakhauth.onrender.com/api'
+console.log(import.meta.env.VITE_ENV)
 
 const baseQuery = fetchBaseQuery({
   baseUrl,
