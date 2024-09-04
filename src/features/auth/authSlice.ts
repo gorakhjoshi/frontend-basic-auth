@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { jwtDecode } from 'jwt-decode'
-import { AppDispatch, RootState } from '../../app/store'
-import { AuthState, User } from '../../types/types'
+import { AppDispatch, AuthState, RootState, User } from '../../types/types'
 import { authApiSlice } from './authApiSlice'
 
 const authLocalStorage = localStorage.getItem('isAuth')
@@ -9,7 +8,6 @@ const authLocalStorage = localStorage.getItem('isAuth')
 export const refreshTokenAndSetCredentials = () => async (dispatch: AppDispatch) => {
   try {
     const response = await dispatch(authApiSlice.endpoints.getRefreshToken.initiate())
-    console.log(response)
     if (response.isSuccess) {
       dispatch(setCredentials(response.data))
       return response

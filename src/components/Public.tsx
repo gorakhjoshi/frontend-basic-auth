@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { useLogoutMutation } from '../features/auth/authApiSlice'
 import { isAuthenticated, setLogOut } from '../features/auth/authSlice'
+import { useLogoutMutation } from '../features/auth/authApiSlice'
 
 const Public = () => {
   const isAuth = useSelector(isAuthenticated)
@@ -11,8 +11,7 @@ const Public = () => {
 
   const handleLogout = async () => {
     try {
-      const res = await logout()
-      console.log(res)
+      await logout()
       dispatch(setLogOut())
     } catch (error) {
       console.log(error)
